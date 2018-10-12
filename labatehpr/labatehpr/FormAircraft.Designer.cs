@@ -34,6 +34,7 @@
             this.buttonLeft = new System.Windows.Forms.Button();
             this.buttonUp = new System.Windows.Forms.Button();
             this.pictureBoxCars = new System.Windows.Forms.PictureBox();
+            this.buttonFighterAircraft = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBoxCars)).BeginInit();
             this.SuspendLayout();
             // 
@@ -108,11 +109,22 @@
             this.pictureBoxCars.TabIndex = 0;
             this.pictureBoxCars.TabStop = false;
             // 
+            // buttonFighterAircraft
+            // 
+            this.buttonFighterAircraft.Location = new System.Drawing.Point(127, 5);
+            this.buttonFighterAircraft.Name = "buttonFighterAircraft";
+            this.buttonFighterAircraft.Size = new System.Drawing.Size(163, 22);
+            this.buttonFighterAircraft.TabIndex = 6;
+            this.buttonFighterAircraft.Text = "Cоздать истребитель";
+            this.buttonFighterAircraft.UseVisualStyleBackColor = true;
+            this.buttonFighterAircraft.Click += new System.EventHandler(this.button1_Click);
+            // 
             // FormAircraft
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(884, 461);
+            this.Controls.Add(this.buttonFighterAircraft);
             this.Controls.Add(this.buttonDown);
             this.Controls.Add(this.buttonRight);
             this.Controls.Add(this.buttonLeft);
@@ -134,6 +146,7 @@
         private System.Windows.Forms.Button buttonLeft;
         private System.Windows.Forms.Button buttonRight;
         private System.Windows.Forms.Button buttonDown;
+        private System.Windows.Forms.Button buttonFighterAircraft;
     }
 }
 
