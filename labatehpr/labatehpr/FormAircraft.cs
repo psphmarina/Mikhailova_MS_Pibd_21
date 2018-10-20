@@ -12,7 +12,7 @@ namespace labatehpr
 {
     public partial class FormAircraft : Form
     {
-        private SportCar car;
+        private FighterAircraft car;
         /// <summary>
         /// Конструктор
         /// </summary>
@@ -35,7 +35,7 @@ namespace labatehpr
         private void buttonCreate_Click(object sender, EventArgs e)
         {
             Random rnd = new Random();
-            car = new SportCar(rnd.Next(100, 300), rnd.Next(1000, 2000), Color.Blue,
+            car = new FighterAircraft(rnd.Next(100, 300), rnd.Next(1000, 2000), Color.Blue,
            Color.Yellow, true, true, true);
             car.SetPosition(rnd.Next(10, 100), rnd.Next(10, 100), pictureBoxCars.Width,
            pictureBoxCars.Height);
