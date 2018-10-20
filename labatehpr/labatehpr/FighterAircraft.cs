@@ -8,14 +8,7 @@ using System.Drawing;
 
 namespace labatehpr
 {
-
-    public enum Direction
-    {
-        Up,
-        Down,
-        Left,
-        Right
-    }
+    
     class FighterAircraft : Aircraft
     {
         /// <summary>
