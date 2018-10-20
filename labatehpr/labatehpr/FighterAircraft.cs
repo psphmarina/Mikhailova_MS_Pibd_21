@@ -58,26 +58,26 @@ namespace labatehpr
              
             if (DopMotor) {
                 Brush brDGreen1 = new SolidBrush(DopColor);
-                g.FillEllipse(brDGreen1, _startPosX + 45, _startPosY - 10, 35, 5);
-                g.FillEllipse(brDGreen1, _startPosX + 45, _startPosY + 12, 35, 5);
-                g.DrawEllipse(pen, _startPosX + 45, _startPosY - 10, 35, 5);
-                g.DrawEllipse(pen, _startPosX + 45, _startPosY + 12, 35, 5);
+                g.FillEllipse(brDGreen1, _startPosX + 45, _startPosY - 10 + 20, 35, 5);
+                g.FillEllipse(brDGreen1, _startPosX + 45, _startPosY + 12 + 20, 35, 5);
+                g.DrawEllipse(pen, _startPosX + 45, _startPosY - 10 + 20, 35, 5);
+                g.DrawEllipse(pen, _startPosX + 45, _startPosY + 12 + 20, 35, 5);
             }
             if (Bomb)
             {
                 Brush brb = new SolidBrush(Color.Black);
-                g.FillEllipse(brb, _startPosX + 80, _startPosY - 15, 7, 5);
-                g.FillEllipse(brb, _startPosX + 80, _startPosY + 15, 7, 5);
-                g.FillEllipse(brb, _startPosX + 95, _startPosY - 15, 7, 5);
-                g.FillEllipse(brb, _startPosX + 95, _startPosY + 15, 7, 5);
+                g.FillEllipse(brb, _startPosX + 80, _startPosY - 15 + 20, 7, 5);
+                g.FillEllipse(brb, _startPosX + 80, _startPosY + 15 + 20, 7, 5);
+                g.FillEllipse(brb, _startPosX + 95, _startPosY - 15 + 20, 7, 5);
+                g.FillEllipse(brb, _startPosX + 95, _startPosY + 15 + 20, 7, 5);
             }
             if (Exhaust)
             {
                 Brush brb = new SolidBrush(Color.Gray);
-                g.FillEllipse(brb, _startPosX + 20, _startPosY - 25, 17, 15);
-                g.FillEllipse(brb, _startPosX + 7, _startPosY - 30, 20, 15);
-                g.FillEllipse(brb, _startPosX + 20, _startPosY + 25, 17, 15);
-                g.FillEllipse(brb, _startPosX + 7, _startPosY + 30, 20, 15);
+                g.FillEllipse(brb, _startPosX + 20, _startPosY - 20 + 20, 17, 15);
+                g.FillEllipse(brb, _startPosX + 7, _startPosY - 25 + 20, 20, 15);
+                g.FillEllipse(brb, _startPosX + 20, _startPosY + 20 + 20, 17, 15);
+                g.FillEllipse(brb, _startPosX + 7, _startPosY + 25 + 20, 20, 15);
             }
         }
     }
