@@ -38,7 +38,8 @@ namespace labatehpr
             car = new Aircraft(rnd.Next(100, 300), rnd.Next(1000, 2000), Color.Gray);
             car.SetPosition(rnd.Next(10, 100), rnd.Next(10, 100), pictureBoxCars.Width,
            pictureBoxCars.Height);
-            Draw();
+            Draw();
+
         }
         /// <summary>
         /// Обработка нажатия кнопок управления

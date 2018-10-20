@@ -8,14 +8,7 @@ using System.Drawing;
 
 namespace labatehpr
 {
-
-    public enum Direction
-    {
-        Up,
-        Down,
-        Left,
-        Right
-    }
+    
     class FighterAircraft : Aircraft
     {
         /// <summary>
@@ -48,36 +41,30 @@ namespace labatehpr
             
             Brush brDGreen = new SolidBrush(MainColor);
             base.DrawAircraft(g);
-            //отрисовка
-
-
-          
-             
-            //контуры
             Pen pen = new Pen(Color.Black);
              
             if (DopMotor) {
                 Brush brDGreen1 = new SolidBrush(DopColor);
-                g.FillEllipse(brDGreen1, _startPosX + 45, _startPosY - 10, 35, 5);
-                g.FillEllipse(brDGreen1, _startPosX + 45, _startPosY + 12, 35, 5);
-                g.DrawEllipse(pen, _startPosX + 45, _startPosY - 10, 35, 5);
-                g.DrawEllipse(pen, _startPosX + 45, _startPosY + 12, 35, 5);
+                g.FillEllipse(brDGreen1, _startPosX + 45, _startPosY + 10, 35, 5);
+                g.FillEllipse(brDGreen1, _startPosX + 45, _startPosY + 32, 35, 5);
+                g.DrawEllipse(pen, _startPosX + 45, _startPosY + 10, 35, 5);
+                g.DrawEllipse(pen, _startPosX + 45, _startPosY + 32, 35, 5);
             }
             if (Bomb)
             {
                 Brush brb = new SolidBrush(Color.Black);
-                g.FillEllipse(brb, _startPosX + 80, _startPosY - 15, 7, 5);
-                g.FillEllipse(brb, _startPosX + 80, _startPosY + 15, 7, 5);
-                g.FillEllipse(brb, _startPosX + 95, _startPosY - 15, 7, 5);
-                g.FillEllipse(brb, _startPosX + 95, _startPosY + 15, 7, 5);
+                g.FillEllipse(brb, _startPosX + 80, _startPosY + 5, 7, 5);
+                g.FillEllipse(brb, _startPosX + 80, _startPosY + 35, 7, 5);
+                g.FillEllipse(brb, _startPosX + 95, _startPosY + 5, 7, 5);
+                g.FillEllipse(brb, _startPosX + 95, _startPosY + 35, 7, 5);
             }
             if (Exhaust)
             {
                 Brush brb = new SolidBrush(Color.Gray);
-                g.FillEllipse(brb, _startPosX + 20, _startPosY - 25, 17, 15);
-                g.FillEllipse(brb, _startPosX + 7, _startPosY - 30, 20, 15);
-                g.FillEllipse(brb, _startPosX + 20, _startPosY + 25, 17, 15);
-                g.FillEllipse(brb, _startPosX + 7, _startPosY + 30, 20, 15);
+                g.FillEllipse(brb, _startPosX + 20, _startPosY - 10, 17, 15);
+                g.FillEllipse(brb, _startPosX + 7, _startPosY - 15, 20, 15);
+                g.FillEllipse(brb, _startPosX + 20, _startPosY + 35, 17, 15);
+                g.FillEllipse(brb, _startPosX + 7, _startPosY + 40, 20, 15);
             }
         }
     }
