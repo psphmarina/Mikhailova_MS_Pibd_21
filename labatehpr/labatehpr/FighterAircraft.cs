@@ -8,7 +8,6 @@ using System.Drawing;
 
 namespace labatehpr
 {
-    
     class FighterAircraft : Aircraft
     {
         /// <summary>
