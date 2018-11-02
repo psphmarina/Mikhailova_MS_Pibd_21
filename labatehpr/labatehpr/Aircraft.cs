@@ -86,6 +86,4 @@ namespace labatehpr
             g.DrawEllipse(pen, _startPosX + 10, _startPosY - 10 + 20, 8, 30);
         }
     }
-
-
 }

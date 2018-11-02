@@ -26,6 +26,7 @@ namespace labatehpr
         /// Отрисовка автомобиля
         /// </summary>
         /// <param name="g"></param> 
-        void DrawAircraft(Graphics g);
+        void DrawAircraft(Graphics g);
+
     }
 }

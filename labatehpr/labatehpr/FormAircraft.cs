@@ -68,7 +68,7 @@ namespace labatehpr
             Draw();
         }
 
-        private void button1_Click(object sender, EventArgs e)
+        private void buttonCreateFighter_Click(object sender, EventArgs e)
         {
             Random rnd = new Random();
             car = new FighterAircraft(rnd.Next(100, 300), rnd.Next(1000, 2000), Color.Gray, Color.Green, true, true, true
