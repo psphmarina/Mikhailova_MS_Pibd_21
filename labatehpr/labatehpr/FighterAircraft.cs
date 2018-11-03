@@ -8,42 +8,8 @@ using System.Drawing;
 
 namespace labatehpr
 {
-    class FighterAircraft
+    class FighterAircraft : Aircraft
     {
-        /// <summary>
-        /// Левая координата отрисовки автомобиля
-        /// </summary>
-        private float _startPosX;
-        /// <summary>
-        /// Правая кооридната отрисовки автомобиля
-        /// </summary>
-        private float _startPosY;
-        /// <summary>
-        /// Ширина окна отрисовки
-        /// </summary>
-        private int _pictureWidth;
-        //Высота окна отрисовки
-        private int _pictureHeight;
-        /// <summary>
-        /// Ширина отрисовки автомобиля
-        /// </summary>
-        private const int carWidth = 100;
-        /// <summary>
-        /// Ширина отрисовки автомобиля
-        /// </summary>
-        private const int carHeight = 60;
-        /// <summary>
-        /// Максимальная скорость
-        /// </summary>
-        public int MaxSpeed { private set; get; }
-        /// <summary>
-        /// Вес автомобиля
-        /// </summary>
-        public float Weight { private set; get; }
-        /// <summary>
-        /// Основной цвет кузова
-        /// </summary>
-        public Color MainColor { private set; get; }
         /// <summary>
         /// Дополнительный цвет
         /// </summary>
@@ -51,109 +17,54 @@ namespace labatehpr
         /// <summary>
         /// Признак наличия переднего спойлера
         /// </summary>
-        public bool FrontSpoiler { private set; get; }
-        /// <summary>
-        /// Признак наличия боковых спойлеров
-        /// </summary>
-        public bool SideSpoiler { private set; get; }
-        /// <summary>
-        /// Признак наличия заднего спойлера
-        /// </summary>
-        public bool BackSpoiler { private set; get; }
-        /// <summary>
+        public bool DopMotor { private set; get; }
+        public bool Bomb { private set; get; }
+        public bool Exhaust { private set; get; }
         /// Конструктор
         /// </summary>
         /// <param name="maxSpeed">Максимальная скорость</param>
         /// <param name="weight">Вес автомобиля</param>
-        /// <param name="mainColor">Основной цвет кузова</param>
-        /// <param name="dopColor">Дополнительный цвет</param>
-        /// <param name="frontSpoiler">Признак наличия переднего спойлера</param>
-        /// <param name="sideSpoiler">Признак наличия боковых спойлеров</param>
-        /// <param name="backSpoiler">Признак наличия заднего спойлера</param>
-        public FighterAircraft(int maxSpeed, float weight, Color mainColor, Color dopColor, bool
-       frontSpoiler, bool sideSpoiler, bool backSpoiler)
+        /// <param name="mainColor">Основной цвет </param>
+        /// <param name="dopMotor">Дополнительный двигатель</param>
+        public FighterAircraft(int maxSpeed, float weight, Color mainColor, Color dopColor, bool dopMotor, bool bomb, bool exhaust) :
+        base(maxSpeed, weight, mainColor)
         {
-            MaxSpeed = maxSpeed;
-            Weight = weight;
-            MainColor = mainColor;
             DopColor = dopColor;
+            DopMotor = dopMotor;
+            Bomb = bomb;
+            Exhaust = exhaust;
+
         }
-        /// <summary>
-        /// Установка позиции автомобиля
-        /// </summary>
-        /// <param name="x">Координата X</param>
-        /// <param name="y">Координата Y</param>
-        /// <param name="width">Ширина картинки</param>
-        /// <param name="height">Высота картинки</param>
-        public void SetPosition(int x, int y, int width, int height)
+        public override void DrawAircraft(Graphics g)
         {
-            _startPosX = x;
-            _startPosY = y;
-            _pictureWidth = width;
-            _pictureHeight = height;
-        }
-        /// <summary>
-        /// Изменение направления пермещения
-        /// </summary>
-        /// <param name="direction">Направление</param>
-        public void MoveTransport(Direction direction)
-        {
-            float step = MaxSpeed * 100 / Weight;
-            switch (direction)
+            
+            Brush brDGreen = new SolidBrush(MainColor);
+            base.DrawAircraft(g);
+            Pen pen = new Pen(Color.Black);
+             
+            if (DopMotor) {
+                Brush brDGreen1 = new SolidBrush(DopColor);
+                g.FillEllipse(brDGreen1, _startPosX + 45, _startPosY + 10, 35, 5);
+                g.FillEllipse(brDGreen1, _startPosX + 45, _startPosY + 32, 35, 5);
+                g.DrawEllipse(pen, _startPosX + 45, _startPosY + 10, 35, 5);
+                g.DrawEllipse(pen, _startPosX + 45, _startPosY + 32, 35, 5);
+            }
+            if (Bomb)
             {
-                // вправо
-                case Direction.Right:
-                    if (_startPosX + step < _pictureWidth - carWidth)
-                    {
-                        _startPosX += step;
-                    }
-                    break;
-                //влево
-                case Direction.Left:
-                    if (_startPosX - step > 0)
-                    {
-                        _startPosX -= step;
-                    }
-                    break;
-                
-                //вверх
-                case Direction.Up:
-                    if (_startPosY - step > 0)
-                    {
-                        _startPosY -= step;
-                    }
-                    break;
-                //вниз
-                case Direction.Down:
-                    if (_startPosY + step < _pictureHeight - carHeight)
-                    {
-                        _startPosY += step;
-                    }
-                    break;
+                Brush brb = new SolidBrush(Color.Black);
+                g.FillEllipse(brb, _startPosX + 80, _startPosY + 5, 7, 5);
+                g.FillEllipse(brb, _startPosX + 80, _startPosY + 35, 7, 5);
+                g.FillEllipse(brb, _startPosX + 95, _startPosY + 5, 7, 5);
+                g.FillEllipse(brb, _startPosX + 95, _startPosY + 35, 7, 5);
+            }
+            if (Exhaust)
+            {
+                Brush brb = new SolidBrush(Color.Gray);
+                g.FillEllipse(brb, _startPosX + 20, _startPosY - 10, 17, 15);
+                g.FillEllipse(brb, _startPosX + 7, _startPosY - 15, 20, 15);
+                g.FillEllipse(brb, _startPosX + 20, _startPosY + 35, 17, 15);
+                g.FillEllipse(brb, _startPosX + 7, _startPosY + 40, 20, 15);
             }
         }
-        /// <summary>
-        /// Отрисовка автомобиля
-        /// </summary>
-        /// <param name="g"></param>
-        public void DrawCar(Graphics g)
-        {
-            
-            //отрисовка
-            Brush brDGreen = new SolidBrush(Color.DarkGreen);
-            g.FillEllipse(brDGreen, _startPosX, _startPosY, 90, 10);
-            g.FillRectangle(brDGreen, _startPosX + 60, _startPosY - 22, 12, 50);
-            g.FillRectangle(brDGreen, _startPosX + 10, _startPosY - 10, 8, 30);
-            g.FillEllipse(brDGreen, _startPosX + 45, _startPosY - 20, 40, 5);
-            g.FillEllipse(brDGreen, _startPosX + 45, _startPosY + 20, 40, 5);
-            
-            //контуры
-            Pen pen = new Pen(Color.Black);
-            g.DrawEllipse(pen, _startPosX, _startPosY, 90, 10);
-            g.DrawRectangle(pen, _startPosX + 60, _startPosY - 22, 12, 50);
-            g.DrawRectangle(pen, _startPosX + 10, _startPosY - 10, 8, 30);
-            g.DrawEllipse(pen, _startPosX + 45, _startPosY - 20, 40, 5);
-            g.DrawEllipse(pen, _startPosX + 45, _startPosY + 20, 40, 5);
-        }
     }
-    }
+}
