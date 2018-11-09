@@ -117,7 +117,7 @@
             this.buttonFighterAircraft.TabIndex = 6;
             this.buttonFighterAircraft.Text = "Cоздать истребитель";
             this.buttonFighterAircraft.UseVisualStyleBackColor = true;
-            this.buttonFighterAircraft.Click += new System.EventHandler(this.button1_Click);
+            this.buttonFighterAircraft.Click += new System.EventHandler(this.buttonCreateFighter_Click);
             // 
             // FormAircraft
             // 
