@@ -41,12 +41,6 @@ namespace labatehpr
             
             Brush brDGreen = new SolidBrush(MainColor);
             base.DrawAircraft(g);
-            //отрисовка
-
-
-          
-             
-            //контуры
             Pen pen = new Pen(Color.Black);
              
             if (DopMotor) {
