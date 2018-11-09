@@ -130,6 +130,7 @@ namespace labatehpr
                 }
                 g.DrawLine(pen, i * _placeSizeWidth, 0, i * _placeSizeWidth, 400);
             }
-        }
+        }
+
     }
 }
