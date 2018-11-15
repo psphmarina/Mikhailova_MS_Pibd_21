@@ -16,7 +16,7 @@ namespace labatehpr
         {
             Application.EnableVisualStyles();
             Application.SetCompatibleTextRenderingDefault(false);
-            Application.Run(new FormAircraft());
+            Application.Run(new FormHangar());
         }
     }
 }
