@@ -66,5 +66,9 @@ namespace labatehpr
                 g.FillEllipse(brb, _startPosX + 7, _startPosY + 40, 20, 15);
             }
         }
+        public void SetDopColor(Color color)
+        {
+            DopColor = color;
+        }
     }
 }

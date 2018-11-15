@@ -29,14 +29,13 @@
         private void InitializeComponent()
         {
             this.pictureBoxHangar = new System.Windows.Forms.PictureBox();
-            this.buttonAircraft = new System.Windows.Forms.Button();
-            this.buttonFighterAircraft = new System.Windows.Forms.Button();
             this.groupBox1 = new System.Windows.Forms.GroupBox();
             this.pictureBoxTake = new System.Windows.Forms.PictureBox();
             this.ButtonTake = new System.Windows.Forms.Button();
             this.maskedTextBox1 = new System.Windows.Forms.MaskedTextBox();
             this.label1 = new System.Windows.Forms.Label();
             this.listBoxLevels = new System.Windows.Forms.ListBox();
+            this.buttonChoice = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBoxHangar)).BeginInit();
             this.groupBox1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBoxTake)).BeginInit();
@@ -51,26 +50,6 @@
             this.pictureBoxHangar.Size = new System.Drawing.Size(628, 415);
             this.pictureBoxHangar.TabIndex = 0;
             this.pictureBoxHangar.TabStop = false;
-            // 
-            // buttonAircraft
-            // 
-            this.buttonAircraft.Location = new System.Drawing.Point(650, 12);
-            this.buttonAircraft.Name = "buttonAircraft";
-            this.buttonAircraft.Size = new System.Drawing.Size(144, 43);
-            this.buttonAircraft.TabIndex = 1;
-            this.buttonAircraft.Text = "Поставить самолёт";
-            this.buttonAircraft.UseVisualStyleBackColor = true;
-            this.buttonAircraft.Click += new System.EventHandler(this.buttonAircraft_Click);
-            // 
-            // buttonFighterAircraft
-            // 
-            this.buttonFighterAircraft.Location = new System.Drawing.Point(653, 61);
-            this.buttonFighterAircraft.Name = "buttonFighterAircraft";
-            this.buttonFighterAircraft.Size = new System.Drawing.Size(141, 43);
-            this.buttonFighterAircraft.TabIndex = 2;
-            this.buttonFighterAircraft.Text = "Поставить истребитель";
-            this.buttonFighterAircraft.UseVisualStyleBackColor = true;
-            this.buttonFighterAircraft.Click += new System.EventHandler(this.buttonFighterAircraft_Click);
             // 
             // groupBox1
             // 
@@ -126,17 +105,27 @@
             this.listBoxLevels.Name = "listBoxLevels";
             this.listBoxLevels.Size = new System.Drawing.Size(138, 95);
             this.listBoxLevels.TabIndex = 4;
+            this.listBoxLevels.Click += new System.EventHandler(this.listBoxLevels_SelectedIndexChanged);
             this.listBoxLevels.SelectedIndexChanged += new System.EventHandler(this.listBoxLevels_SelectedIndexChanged);
+            // 
+            // buttonChoice
+            // 
+            this.buttonChoice.Location = new System.Drawing.Point(652, 34);
+            this.buttonChoice.Name = "buttonChoice";
+            this.buttonChoice.Size = new System.Drawing.Size(137, 43);
+            this.buttonChoice.TabIndex = 5;
+            this.buttonChoice.Text = "Выбор самолёта";
+            this.buttonChoice.UseVisualStyleBackColor = true;
+            this.buttonChoice.Click += new System.EventHandler(this.buttonChoice_Click);
             // 
             // FormHangar
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(800, 450);
+            this.Controls.Add(this.buttonChoice);
             this.Controls.Add(this.listBoxLevels);
             this.Controls.Add(this.groupBox1);
-            this.Controls.Add(this.buttonFighterAircraft);
-            this.Controls.Add(this.buttonAircraft);
             this.Controls.Add(this.pictureBoxHangar);
             this.Name = "FormHangar";
             this.Text = "Ангар";
@@ -151,13 +140,12 @@
         #endregion
 
         private System.Windows.Forms.PictureBox pictureBoxHangar;
-        private System.Windows.Forms.Button buttonAircraft;
-        private System.Windows.Forms.Button buttonFighterAircraft;
         private System.Windows.Forms.GroupBox groupBox1;
         private System.Windows.Forms.Button ButtonTake;
         private System.Windows.Forms.MaskedTextBox maskedTextBox1;
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.PictureBox pictureBoxTake;
         private System.Windows.Forms.ListBox listBoxLevels;
+        private System.Windows.Forms.Button buttonChoice;
     }
 }
