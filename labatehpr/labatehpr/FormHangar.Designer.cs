@@ -32,10 +32,11 @@
             this.buttonAircraft = new System.Windows.Forms.Button();
             this.buttonFighterAircraft = new System.Windows.Forms.Button();
             this.groupBox1 = new System.Windows.Forms.GroupBox();
-            this.label1 = new System.Windows.Forms.Label();
-            this.maskedTextBox1 = new System.Windows.Forms.MaskedTextBox();
-            this.ButtonTake = new System.Windows.Forms.Button();
             this.pictureBoxTake = new System.Windows.Forms.PictureBox();
+            this.ButtonTake = new System.Windows.Forms.Button();
+            this.maskedTextBox1 = new System.Windows.Forms.MaskedTextBox();
+            this.label1 = new System.Windows.Forms.Label();
+            this.listBoxLevels = new System.Windows.Forms.ListBox();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBoxHangar)).BeginInit();
             this.groupBox1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBoxTake)).BeginInit();
@@ -63,7 +64,7 @@
             // 
             // buttonFighterAircraft
             // 
-            this.buttonFighterAircraft.Location = new System.Drawing.Point(652, 69);
+            this.buttonFighterAircraft.Location = new System.Drawing.Point(653, 61);
             this.buttonFighterAircraft.Name = "buttonFighterAircraft";
             this.buttonFighterAircraft.Size = new System.Drawing.Size(141, 43);
             this.buttonFighterAircraft.TabIndex = 2;
@@ -84,21 +85,13 @@
             this.groupBox1.TabStop = false;
             this.groupBox1.Text = "Забрать самолёт";
             // 
-            // label1
+            // pictureBoxTake
             // 
-            this.label1.AutoSize = true;
-            this.label1.Location = new System.Drawing.Point(15, 32);
-            this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(42, 13);
-            this.label1.TabIndex = 0;
-            this.label1.Text = "Место:";
-            // 
-            // maskedTextBox1
-            // 
-            this.maskedTextBox1.Location = new System.Drawing.Point(70, 31);
-            this.maskedTextBox1.Name = "maskedTextBox1";
-            this.maskedTextBox1.Size = new System.Drawing.Size(41, 20);
-            this.maskedTextBox1.TabIndex = 1;
+            this.pictureBoxTake.Location = new System.Drawing.Point(9, 80);
+            this.pictureBoxTake.Name = "pictureBoxTake";
+            this.pictureBoxTake.Size = new System.Drawing.Size(136, 115);
+            this.pictureBoxTake.TabIndex = 3;
+            this.pictureBoxTake.TabStop = false;
             // 
             // ButtonTake
             // 
@@ -110,19 +103,37 @@
             this.ButtonTake.UseVisualStyleBackColor = true;
             this.ButtonTake.Click += new System.EventHandler(this.ButtonTake_Click);
             // 
-            // pictureBoxTake
+            // maskedTextBox1
             // 
-            this.pictureBoxTake.Location = new System.Drawing.Point(9, 80);
-            this.pictureBoxTake.Name = "pictureBoxTake";
-            this.pictureBoxTake.Size = new System.Drawing.Size(136, 115);
-            this.pictureBoxTake.TabIndex = 3;
-            this.pictureBoxTake.TabStop = false;
+            this.maskedTextBox1.Location = new System.Drawing.Point(70, 31);
+            this.maskedTextBox1.Name = "maskedTextBox1";
+            this.maskedTextBox1.Size = new System.Drawing.Size(41, 20);
+            this.maskedTextBox1.TabIndex = 1;
+            // 
+            // label1
+            // 
+            this.label1.AutoSize = true;
+            this.label1.Location = new System.Drawing.Point(15, 32);
+            this.label1.Name = "label1";
+            this.label1.Size = new System.Drawing.Size(42, 13);
+            this.label1.TabIndex = 0;
+            this.label1.Text = "Место:";
+            // 
+            // listBoxLevels
+            // 
+            this.listBoxLevels.FormattingEnabled = true;
+            this.listBoxLevels.Location = new System.Drawing.Point(652, 116);
+            this.listBoxLevels.Name = "listBoxLevels";
+            this.listBoxLevels.Size = new System.Drawing.Size(138, 95);
+            this.listBoxLevels.TabIndex = 4;
+            this.listBoxLevels.SelectedIndexChanged += new System.EventHandler(this.listBoxLevels_SelectedIndexChanged);
             // 
             // FormHangar
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(800, 450);
+            this.Controls.Add(this.listBoxLevels);
             this.Controls.Add(this.groupBox1);
             this.Controls.Add(this.buttonFighterAircraft);
             this.Controls.Add(this.buttonAircraft);
@@ -147,5 +158,6 @@
         private System.Windows.Forms.MaskedTextBox maskedTextBox1;
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.PictureBox pictureBoxTake;
+        private System.Windows.Forms.ListBox listBoxLevels;
     }
 }
