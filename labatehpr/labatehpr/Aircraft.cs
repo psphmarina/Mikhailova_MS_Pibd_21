@@ -29,6 +29,20 @@ namespace labatehpr
             Weight = weight;
             MainColor = mainColor;
         }
+        /// <summary>
+        /// Конструктор
+        /// </summary>
+        /// <param name="info">Информация по объекту</param>
+        public Aircraft(string info)
+        {
+            string[] strs = info.Split(';');
+            if (strs.Length == 3)
+            {
+                MaxSpeed = Convert.ToInt32(strs[0]);
+                Weight = Convert.ToInt32(strs[1]);
+                MainColor = Color.FromName(strs[2]);
+            }
+        }
         public override void MoveTransport(Direction direction)
         {
             float step = MaxSpeed * 100 / Weight;
@@ -84,6 +98,10 @@ namespace labatehpr
             g.DrawEllipse(pen, _startPosX + 40, _startPosY - 20 + 20, 40, 5);
             g.DrawEllipse(pen, _startPosX + 40, _startPosY + 20 + 20, 40, 5);
             g.DrawEllipse(pen, _startPosX + 10, _startPosY - 10 + 20, 8, 30);
+        }
+        public override string ToString()
+        {
+            return MaxSpeed + ";" + Weight + ";" + MainColor.Name;
         }
     }
 }

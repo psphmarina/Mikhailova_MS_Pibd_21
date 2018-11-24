@@ -35,6 +35,20 @@ namespace labatehpr
             Exhaust = exhaust;
 
         }
+        public FighterAircraft(string info) : base(info)
+        {
+            string[] strs = info.Split(';');
+            if (strs.Length == 7)
+            {
+                MaxSpeed = Convert.ToInt32(strs[0]);
+                Weight = Convert.ToInt32(strs[1]);
+                MainColor = Color.FromName(strs[2]);
+                DopColor = Color.FromName(strs[3]);
+                DopMotor = Convert.ToBoolean(strs[4]);
+                Bomb = Convert.ToBoolean(strs[5]);
+                Exhaust = Convert.ToBoolean(strs[6]);
+            }
+        }
         public override void DrawAircraft(Graphics g)
         {
             
@@ -69,6 +83,11 @@ namespace labatehpr
         public void SetDopColor(Color color)
         {
             DopColor = color;
+        }
+        public override string ToString()
+        {
+            return base.ToString() + ";" + DopColor.Name + ";" + DopMotor + ";" +
+            Bomb + ";" + Exhaust;
         }
     }
 }
