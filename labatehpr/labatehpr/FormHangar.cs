@@ -13,6 +13,10 @@ namespace labatehpr
     public partial class FormHangar : Form
     {
         MultiLevelHangar hangar;
+        /// <summary>
+        /// Форма для добавления
+        /// </summary>
+        FormCarConfig form;
         private const int countLevel = 5;
         public FormHangar()
         {
@@ -106,6 +110,32 @@ namespace labatehpr
         private void listBoxLevels_SelectedIndexChanged(object sender, EventArgs e)
         {
             Draw();
+        }
+
+        private void buttonChoice_Click(object sender, EventArgs e)
+        {
+            form = new FormCarConfig();
+            form.AddEvent(AddCar);
+            form.Show();
+        }
+        /// <summary>
+        /// Метод добавления машины
+        /// </summary>
+        /// <param name="car"></param>
+        private void AddCar(ITransport car)
+        {
+            if (car != null && listBoxLevels.SelectedIndex > -1)
+            {
+                int place = hangar[listBoxLevels.SelectedIndex] + car;
+                if (place > -1)
+                {
+                    Draw();
+                }
+                else
+                {
+                    MessageBox.Show("Машину не удалось поставить");
+                }
+            }
         }
     }
 }

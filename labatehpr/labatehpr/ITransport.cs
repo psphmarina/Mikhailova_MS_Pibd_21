@@ -7,7 +7,7 @@ using System.Threading.Tasks;
 
 namespace labatehpr
 {
-    interface ITransport
+    public interface ITransport
     {
         /// <summary>
         /// Установка позиции автомобиля
@@ -27,6 +27,6 @@ namespace labatehpr
         /// </summary>
         /// <param name="g"></param> 
         void DrawAircraft(Graphics g);
-
+        void SetMainColor(Color color);
     }
 }
