@@ -39,6 +39,8 @@ namespace labatehpr
                 car.SetPosition(5, 25, pictureBoxAircraft.Width, pictureBoxAircraft.Height);
                 car.DrawAircraft(gr);
                 pictureBoxAircraft.Image = bmp;
+            } else { 
+                throw new HangarNullCarException();
             }
         }
         /// <summary>
@@ -47,14 +49,19 @@ namespace labatehpr
         /// <param name="ev"></param>
         public void AddEvent(carDelegate ev)
         {
+            
             if (eventAddCar == null)
             {
                 eventAddCar = new carDelegate(ev);
+                
             }
             else
             {
+                
                 eventAddCar += ev;
+                
             }
+
         }
         private void labelAircraft_MouseDown(object sender, MouseEventArgs e)
         {
@@ -72,6 +79,7 @@ namespace labatehpr
             {
                 case "Обычный самолёт":
                     car = new Aircraft(100, 500, Color.White);
+                    
                     break;
                 case "Истребитель":
                     car = new FighterAircraft(100, 500, Color.White, Color.Black, true, true,
@@ -132,7 +140,9 @@ namespace labatehpr
 
         private void buttonAdd_Click(object sender, EventArgs e)
         {
-            eventAddCar?.Invoke(car);
+            
+                eventAddCar?.Invoke(car);
+            
             Close();
         }
         

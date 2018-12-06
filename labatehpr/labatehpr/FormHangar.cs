@@ -1,4 +1,5 @@
-﻿using System;
+﻿using NLog;
+using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
@@ -18,9 +19,14 @@ namespace labatehpr
         /// </summary>
         FormCarConfig form;
         private const int countLevel = 5;
+        /// <summary>
+        /// Логгер
+        /// </summary>
+        private Logger logger;
         public FormHangar()
         {
             InitializeComponent();
+            logger = LogManager.GetCurrentClassLogger();
             hangar = new MultiLevelHangar(20, pictureBoxHangar.Width, pictureBoxHangar.Height);
             //заполнение listBox
             for (int i = 0; i < countLevel; i++)
@@ -31,78 +37,51 @@ namespace labatehpr
         }
         private void Draw()
         {
-            if (listBoxLevels.SelectedIndex > -1) { 
+            if (listBoxLevels.SelectedIndex > -1)
+            {
                 Bitmap bmp = new Bitmap(pictureBoxHangar.Width, pictureBoxHangar.Height);
                 Graphics gr = Graphics.FromImage(bmp);
                 hangar[listBoxLevels.SelectedIndex].Draw(gr);
                 pictureBoxHangar.Image = bmp;
             }
         }
-        private void buttonAircraft_Click(object sender, EventArgs e)
-        {
-            if (listBoxLevels.SelectedIndex > -1)
-            {
-                ColorDialog dialog = new ColorDialog();
-                if (dialog.ShowDialog() == DialogResult.OK)
-                {
-                    var car = new Aircraft(100, 1000, dialog.Color);
-                    int place = hangar[listBoxLevels.SelectedIndex] + car;
-                    if (place == -1)
-                    {
-                        MessageBox.Show("Нет свободных мест", "Ошибка",
-                        MessageBoxButtons.OK, MessageBoxIcon.Error);
-                    }
-                    Draw();
-                }
-            }
-        }
-
-        private void buttonFighterAircraft_Click(object sender, EventArgs e)
-        {
-            if (listBoxLevels.SelectedIndex > -1)
-            {
-                ColorDialog dialog = new ColorDialog();
-                if (dialog.ShowDialog() == DialogResult.OK)
-                {
-                    ColorDialog dialogDop = new ColorDialog();
-                    if (dialogDop.ShowDialog() == DialogResult.OK)
-                    {
-                        var car = new FighterAircraft(100, 1000, dialog.Color, dialogDop.Color,
-                        true, true, true);
-                        int place = hangar[listBoxLevels.SelectedIndex] + car;
-                        if (place == -1)
-                        {
-                            MessageBox.Show("Нет свободных мест", "Ошибка",
-                            MessageBoxButtons.OK, MessageBoxIcon.Error);
-                        }
-                        Draw();
-                    }
-                }
-            }
-        }
-
         private void ButtonTake_Click(object sender, EventArgs e)
         {
             if (listBoxLevels.SelectedIndex > -1)
             {
                 if (maskedTextBox1.Text != "")
                 {
-                    var car = hangar[listBoxLevels.SelectedIndex] - Convert.ToInt32(maskedTextBox1.Text);
-                    if (car != null)
+                    try
                     {
+                        var car = hangar[listBoxLevels.SelectedIndex] - Convert.ToInt32(maskedTextBox1.Text);
+
                         Bitmap bmp = new Bitmap(pictureBoxTake.Width,
                    pictureBoxTake.Height);
                         Graphics gr = Graphics.FromImage(bmp);
                         car.SetPosition(5, 15, pictureBoxTake.Width, pictureBoxTake.Height);
                         car.DrawAircraft(gr);
                         pictureBoxTake.Image = bmp;
+                        logger.Info("Изъят самолёт " + car.ToString() + " с места " + maskedTextBox1.Text);
+                        Draw();
                     }
-                    else
+                    catch (HangarNullCarException ex)
                     {
+                        MessageBox.Show(ex.Message, "Нечего добавлять", MessageBoxButtons.OK,
+                        MessageBoxIcon.Error);
+                    }
+                    catch (HangarNotFoundException ex)
+                    {
+                        MessageBox.Show(ex.Message, "Не найдено", MessageBoxButtons.OK,
+                        MessageBoxIcon.Error);
                         Bitmap bmp = new Bitmap(pictureBoxTake.Width, pictureBoxTake.Height);
                         pictureBoxTake.Image = bmp;
                     }
-                    Draw();
+                    catch (Exception ex)
+                    {
+                        MessageBox.Show(ex.Message, "Неизвестная ошибка",
+                        MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    }
+
                 }
             }
         }
@@ -115,7 +94,9 @@ namespace labatehpr
         private void buttonChoice_Click(object sender, EventArgs e)
         {
             form = new FormCarConfig();
+
             form.AddEvent(AddCar);
+
             form.Show();
         }
         /// <summary>
@@ -124,33 +105,42 @@ namespace labatehpr
         /// <param name="car"></param>
         private void AddCar(ITransport car)
         {
-            if (car != null && listBoxLevels.SelectedIndex > -1)
+            if (car!=null && listBoxLevels.SelectedIndex > -1)
             {
-                int place = hangar[listBoxLevels.SelectedIndex] + car;
-                if (place > -1)
+                try
                 {
+                    int place = hangar[listBoxLevels.SelectedIndex] + car;
+                    logger.Info("Добавлен самолёт " + car.ToString() + " на место " + place);
                     Draw();
                 }
-                else
+                catch (HangarOverflowException ex)
                 {
-                    MessageBox.Show("Машину не удалось поставить");
+                    MessageBox.Show(ex.Message, "Переполнение", MessageBoxButtons.OK,
+                    MessageBoxIcon.Error);
+                }
+                catch (Exception ex)
+                {
+                    MessageBox.Show(ex.Message, "Неизвестная ошибка",
+                    MessageBoxButtons.OK, MessageBoxIcon.Error);
                 }
             }
+
         }
 
         private void сохранитьToolStripMenuItem_Click(object sender, EventArgs e)
         {
             if (saveFileDialog1.ShowDialog() == System.Windows.Forms.DialogResult.OK)
             {
-                if (hangar.SaveData(saveFileDialog1.FileName))
+                try
                 {
-                    MessageBox.Show("Сохранение прошло успешно", "Результат",
-                    MessageBoxButtons.OK, MessageBoxIcon.Information);
+                    hangar.SaveData(saveFileDialog1.FileName);
+                    MessageBox.Show("Сохранение прошло успешно", "Результат", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                    logger.Info("Сохранено в файл " + saveFileDialog1.FileName);
                 }
-                else
+                catch (Exception ex)
                 {
-                    MessageBox.Show("Не сохранилось", "Результат", MessageBoxButtons.OK,
-                    MessageBoxIcon.Error);
+                    MessageBox.Show(ex.Message, "Неизвестная ошибка при сохранении",
+                    MessageBoxButtons.OK, MessageBoxIcon.Error);
                 }
             }
         }
@@ -159,19 +149,24 @@ namespace labatehpr
         {
             if (openFileDialog1.ShowDialog() == System.Windows.Forms.DialogResult.OK)
             {
-                if (hangar.LoadData(openFileDialog1.FileName))
+                try
                 {
-                    MessageBox.Show("Загрузили", "Результат", MessageBoxButtons.OK,
-                    MessageBoxIcon.Information);
+                    hangar.LoadData(openFileDialog1.FileName);
+                    MessageBox.Show("Загрузили", "Результат", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                    logger.Info("Загружено из файла " + openFileDialog1.FileName);
                 }
-                else
+                catch (HangarOccupiedPlaceException ex)
                 {
-                    MessageBox.Show("Не загрузили", "Результат", MessageBoxButtons.OK,
-                    MessageBoxIcon.Error);
+                    MessageBox.Show(ex.Message, "Занятое место", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                }
+                catch (Exception ex)
+                {
+                    MessageBox.Show(ex.Message, "Неизвестная ошибка при сохранении",
+                    MessageBoxButtons.OK, MessageBoxIcon.Error);
                 }
                 Draw();
             }
         }
-        
+
     }
 }
