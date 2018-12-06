@@ -66,7 +66,7 @@ namespace labatehpr
             labelFAircraft.DoDragDrop(labelFAircraft.Text, DragDropEffects.Move | DragDropEffects.Copy);
         }
 
-        private void panel1_DragDrop(object sender, DragEventArgs e)
+        private void panelCreate_DragDrop(object sender, DragEventArgs e)
         {
             switch (e.Data.GetData(DataFormats.Text).ToString())
             {
@@ -81,7 +81,7 @@ namespace labatehpr
             DrawAircraft();
         }
 
-        private void panel1_DragEnter(object sender, DragEventArgs e)
+        private void panelCreate_DragEnter(object sender, DragEventArgs e)
         {
             if (e.Data.GetDataPresent(DataFormats.Text))
             {

@@ -32,7 +32,7 @@
             this.groupBox1 = new System.Windows.Forms.GroupBox();
             this.labelFAircraft = new System.Windows.Forms.Label();
             this.labelAircraft = new System.Windows.Forms.Label();
-            this.panel1 = new System.Windows.Forms.Panel();
+            this.panelCreate = new System.Windows.Forms.Panel();
             this.labelDopColor = new System.Windows.Forms.Label();
             this.labelMainColor = new System.Windows.Forms.Label();
             this.groupBox2 = new System.Windows.Forms.GroupBox();
@@ -48,7 +48,7 @@
             this.buttonBye = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBoxAircraft)).BeginInit();
             this.groupBox1.SuspendLayout();
-            this.panel1.SuspendLayout();
+            this.panelCreate.SuspendLayout();
             this.groupBox2.SuspendLayout();
             this.SuspendLayout();
             // 
@@ -93,18 +93,18 @@
             this.labelAircraft.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             this.labelAircraft.MouseDown += new System.Windows.Forms.MouseEventHandler(this.labelAircraft_MouseDown);
             // 
-            // panel1
+            // panelCreate
             // 
-            this.panel1.AllowDrop = true;
-            this.panel1.Controls.Add(this.labelDopColor);
-            this.panel1.Controls.Add(this.labelMainColor);
-            this.panel1.Controls.Add(this.pictureBoxAircraft);
-            this.panel1.Location = new System.Drawing.Point(206, 38);
-            this.panel1.Name = "panel1";
-            this.panel1.Size = new System.Drawing.Size(201, 263);
-            this.panel1.TabIndex = 2;
-            this.panel1.DragDrop += new System.Windows.Forms.DragEventHandler(this.panel1_DragDrop);
-            this.panel1.DragEnter += new System.Windows.Forms.DragEventHandler(this.panel1_DragEnter);
+            this.panelCreate.AllowDrop = true;
+            this.panelCreate.Controls.Add(this.labelDopColor);
+            this.panelCreate.Controls.Add(this.labelMainColor);
+            this.panelCreate.Controls.Add(this.pictureBoxAircraft);
+            this.panelCreate.Location = new System.Drawing.Point(206, 38);
+            this.panelCreate.Name = "panelCreate";
+            this.panelCreate.Size = new System.Drawing.Size(201, 263);
+            this.panelCreate.TabIndex = 2;
+            this.panelCreate.DragDrop += new System.Windows.Forms.DragEventHandler(this.panelCreate_DragDrop);
+            this.panelCreate.DragEnter += new System.Windows.Forms.DragEventHandler(this.panelCreate_DragEnter);
             // 
             // labelDopColor
             // 
@@ -248,13 +248,13 @@
             this.Controls.Add(this.buttonBye);
             this.Controls.Add(this.buttonAdd);
             this.Controls.Add(this.groupBox2);
-            this.Controls.Add(this.panel1);
+            this.Controls.Add(this.panelCreate);
             this.Controls.Add(this.groupBox1);
             this.Name = "FormCarConfig";
             this.Text = "FormCarConfig";
             ((System.ComponentModel.ISupportInitialize)(this.pictureBoxAircraft)).EndInit();
             this.groupBox1.ResumeLayout(false);
-            this.panel1.ResumeLayout(false);
+            this.panelCreate.ResumeLayout(false);
             this.groupBox2.ResumeLayout(false);
             this.ResumeLayout(false);
 
@@ -266,7 +266,7 @@
         private System.Windows.Forms.GroupBox groupBox1;
         private System.Windows.Forms.Label labelFAircraft;
         private System.Windows.Forms.Label labelAircraft;
-        private System.Windows.Forms.Panel panel1;
+        private System.Windows.Forms.Panel panelCreate;
         private System.Windows.Forms.Label labelDopColor;
         private System.Windows.Forms.Label labelMainColor;
         private System.Windows.Forms.GroupBox groupBox2;
