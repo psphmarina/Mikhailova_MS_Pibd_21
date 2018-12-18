@@ -205,7 +205,7 @@
             // 
             // panelBrown
             // 
-            this.panelBrown.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(128)))), ((int)(((byte)(64)))), ((int)(((byte)(0)))));
+            this.panelBrown.BackColor = System.Drawing.Color.SaddleBrown;
             this.panelBrown.Location = new System.Drawing.Point(110, 30);
             this.panelBrown.Name = "panelBrown";
             this.panelBrown.Size = new System.Drawing.Size(73, 46);
