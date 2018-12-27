@@ -165,6 +165,12 @@ namespace labatehpr
                 HangarStages[counter][Convert.ToInt32(strs[i].Split(':')[0])] = car;
             }
         }
-        
+        /// <summary>
+        /// Сортировка уровней
+        /// </summary>
+        public void Sort()
+        {
+            HangarStages.Sort();
+        }
     }
 }

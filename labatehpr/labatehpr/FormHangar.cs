@@ -27,7 +27,7 @@ namespace labatehpr
         {
             InitializeComponent();
             logger = LogManager.GetCurrentClassLogger();
-            hangar = new MultiLevelHangar(20, pictureBoxHangar.Width, pictureBoxHangar.Height);
+            hangar = new MultiLevelHangar(countLevel, pictureBoxHangar.Width, pictureBoxHangar.Height);
             //заполнение listBox
             for (int i = 0; i < countLevel; i++)
             {
@@ -118,6 +118,11 @@ namespace labatehpr
                     MessageBox.Show(ex.Message, "Переполнение", MessageBoxButtons.OK,
                     MessageBoxIcon.Error);
                 }
+                catch (HangarAlreadyHaveException ex)
+                {
+                    MessageBox.Show(ex.Message, "Дублирование", MessageBoxButtons.OK,
+                   MessageBoxIcon.Error);
+                }
                 catch (Exception ex)
                 {
                     MessageBox.Show(ex.Message, "Неизвестная ошибка",
@@ -168,5 +173,12 @@ namespace labatehpr
             }
         }
 
+        private void buttonSort_Click(object sender, EventArgs e)
+        {
+            hangar.Sort();
+            Draw();
+            logger.Info("Сортировка уровней");
+
+        }
     }
 }
