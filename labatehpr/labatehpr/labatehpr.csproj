@@ -74,6 +74,7 @@
       <DependentUpon>FormHangar.cs</DependentUpon>
     </Compile>
     <Compile Include="Hangar.cs" />
+    <Compile Include="HangarAlreadyHaveException.cs" />
     <Compile Include="HangarNotFoundException.cs" />
     <Compile Include="HangarNullCarException.cs" />
     <Compile Include="HangarOccupiedPlaceException.cs" />
