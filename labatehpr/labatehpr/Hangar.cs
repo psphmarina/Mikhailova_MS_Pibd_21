@@ -54,15 +54,14 @@ namespace labatehpr
         {
             if (p._places.Count == p._maxCount)
             {
-                return -1;
+                throw new HangarOverflowException();
             }
             for (int i = 0; i < p._maxCount; i++)
             {
                 if (p.CheckFreePlace(i))
                 {
                     p._places.Add(i, car);
-                    p._places[i].SetPosition(5 + i / 5 * p._placeSizeWidth + 5,
-                    i % 5 * p._placeSizeHeight + 15, p.PictureWidth,
+                    p._places[i].SetPosition(5 + i / 5 * p._placeSizeWidth + 5,i % 5 * p._placeSizeHeight + 15, p.PictureWidth,
                     p.PictureHeight);
                     return i;
                 }
@@ -84,7 +83,7 @@ namespace labatehpr
                 p._places.Remove(index);
                 return car;
             }
-            return null;
+            throw new HangarNotFoundException(index);
         }
         /// <summary>
         /// Метод проверки заполнености парковочного места (ячейки массива)
@@ -140,7 +139,7 @@ namespace labatehpr
                 {
                     return _places[ind];
                 }
-                return null;
+                throw new HangarNotFoundException(ind);
             }
             set
             {
@@ -149,6 +148,10 @@ namespace labatehpr
                     _places.Add(ind, value);
                     _places[ind].SetPosition(5 + ind / 5 * _placeSizeWidth + 5, ind % 5 *
                     _placeSizeHeight + 15, PictureWidth, PictureHeight);
+                }
+                else
+                {
+                    throw new HangarOccupiedPlaceException(ind);
                 }
             }
         }
